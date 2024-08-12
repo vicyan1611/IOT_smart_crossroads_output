@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "author": "Vinh Phạm",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 342.6, "left": -64.4, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 9.6, "left": 100.84, "attrs": {} },
+    { "type": "board-cd74hc4067", "id": "mux1", "top": 43.65, "left": -52.91, "attrs": {} },
+    {
+      "type": "wokwi-7segment",
+      "id": "sevseg1",
+      "top": 236.22,
+      "left": -201.04,
+      "attrs": { "digits": "2", "colon": "", "common": "cathode" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 186.35,
+      "left": -124.8,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 176.75,
+      "left": -115.2,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 167.15,
+      "left": -124.8,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r4",
+      "top": 157.55,
+      "left": -124.8,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r5",
+      "top": 147.95,
+      "left": -115.2,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r6",
+      "top": 138.35,
+      "left": -124.8,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r7",
+      "top": 128.75,
+      "left": -124.8,
+      "attrs": { "value": "1000" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": 238, "left": 374.4, "attrs": {} },
+    {
+      "type": "wokwi-stepper-motor",
+      "id": "stepper1",
+      "top": -44.39,
+      "left": 326.83,
+      "attrs": { "size": "17" }
+    },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": -57.4, "left": 105.6, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -32.4,
+      "left": 253.4,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 380.6,
+      "left": 288,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r8",
+      "top": 407.15,
+      "left": 182.4,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "mux1:S0", "esp:12", "green", [ "h0" ] ],
+    [ "mux1:S1", "esp:14", "green", [ "h0" ] ],
+    [ "mux1:S2", "esp:27", "green", [ "h0" ] ],
+    [ "mux1:S3", "esp:26", "green", [ "h0" ] ],
+    [ "esp:GND.1", "bb1:tn.15", "black", [ "h0" ] ],
+    [ "mux1:GND", "bb1:tn.12", "black", [ "h0" ] ],
+    [ "sevseg1:DP", "bb1:tn.1", "black", [ "v56.76" ] ],
+    [ "sevseg1:DIG1", "esp:33", "violet", [ "v-211.2", "h172.8", "v86.4" ] ],
+    [ "sevseg1:DIG2", "esp:32", "violet", [ "v-220.8", "h172.8", "v86.4" ] ],
+    [ "sevseg1:A", "r1:1", "green", [ "v-38.4" ] ],
+    [ "r1:2", "mux1:I0", "green", [ "v0" ] ],
+    [ "sevseg1:B", "r2:1", "green", [ "v-28.8" ] ],
+    [ "r2:2", "mux1:I1", "green", [ "v0" ] ],
+    [ "sevseg1:C", "r3:1", "green", [ "v18.36", "h-57.6", "v-153.6", "h115.2" ] ],
+    [ "r3:2", "mux1:I2", "green", [ "v0" ] ],
+    [ "mux1:I3", "r4:2", "green", [ "h0" ] ],
+    [ "r4:1", "sevseg1:D", "green", [ "v0", "h-86.4", "v172.8", "h67.2" ] ],
+    [ "mux1:I4", "r5:2", "green", [ "h0" ] ],
+    [ "r5:1", "sevseg1:E", "green", [ "v0", "h-124.8", "v192", "h86.4" ] ],
+    [ "mux1:I5", "r6:2", "green", [ "h0" ] ],
+    [ "r6:1", "sevseg1:F", "green", [ "v0", "h-9.6" ] ],
+    [ "mux1:I6", "r7:2", "green", [ "h0" ] ],
+    [ "r7:1", "sevseg1:G", "green", [ "v0", "h-134.4", "v220.8", "h124.8" ] ],
+    [ "servo1:GND", "bb1:tn.16", "black", [ "h-230.4" ] ],
+    [ "mux1:VCC", "bb1:tp.3", "red", [ "h0" ] ],
+    [ "esp:5V", "bb1:tp.13", "red", [ "h0" ] ],
+    [ "servo1:V+", "bb1:tp.25", "red", [ "h0" ] ],
+    [ "servo1:PWM", "esp:15", "green", [ "h-144", "v-124.6" ] ],
+    [ "relay1:GND", "bb1:tn.10", "black", [ "h0" ] ],
+    [ "relay1:VCC", "bb1:tp.9", "red", [ "h-57.6" ] ],
+    [ "esp:3V3", "relay1:COM", "green", [ "h0.15", "v-28.8", "h134.4", "v-38.4" ] ],
+    [ "relay1:NC", "led1:A", "green", [ "v-1.2", "h78", "v48" ] ],
+    [ "led1:C", "esp:GND.2", "green", [ "v0" ] ],
+    [ "stepper1:B-", "esp:2", "green", [ "v0" ] ],
+    [ "stepper1:B+", "esp:0", "green", [ "v0" ] ],
+    [ "stepper1:A+", "esp:4", "green", [ "v0" ] ],
+    [ "stepper1:A-", "esp:16", "green", [ "v0" ] ],
+    [ "bb1:tp.20", "btn1:1.r", "red", [ "v-28.5", "h174.4" ] ],
+    [ "btn1:2.l", "bb1:30t.e", "green", [ "h-9.6", "v19.4" ] ],
+    [ "bb1:30t.d", "esp:17", "gray", [ "v0" ] ],
+    [ "bb1:24t.b", "bb1:tn.20", "black", [ "v0" ] ],
+    [ "r8:1", "bb1:24t.c", "", [ "$bb" ] ],
+    [ "r8:2", "bb1:30t.c", "", [ "$bb" ] ],
+    [ "relay1:IN", "esp:13", "green", [ "h-19.2", "v-0.2" ] ],
+    [ "mux1:COM", "bb1:tp.4", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
