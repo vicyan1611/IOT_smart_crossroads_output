@@ -91,6 +91,13 @@
       "top": 407.15,
       "left": 182.4,
       "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": 61.6,
+      "left": 231.5,
+      "attrs": { "common": "cathode" }
     }
   ],
   "connections": [
@@ -137,10 +144,14 @@
     [ "btn1:2.l", "bb1:30t.e", "green", [ "h-9.6", "v19.4" ] ],
     [ "bb1:30t.d", "esp:17", "gray", [ "v0" ] ],
     [ "bb1:24t.b", "bb1:tn.20", "black", [ "v0" ] ],
+    [ "relay1:IN", "esp:13", "green", [ "h-19.2", "v-0.2" ] ],
+    [ "mux1:COM", "bb1:tp.4", "green", [ "v0" ] ],
     [ "r8:1", "bb1:24t.c", "", [ "$bb" ] ],
     [ "r8:2", "bb1:30t.c", "", [ "$bb" ] ],
-    [ "relay1:IN", "esp:13", "green", [ "h-19.2", "v-0.2" ] ],
-    [ "mux1:COM", "bb1:tp.4", "green", [ "v0" ] ]
+    [ "rgb1:COM", "bb1:tn.25", "black", [ "v0" ] ],
+    [ "rgb1:R", "esp:5", "green", [ "v0" ] ],
+    [ "rgb1:G", "esp:18", "green", [ "v0" ] ],
+    [ "rgb1:B", "esp:19", "green", [ "v0" ] ]
   ],
   "dependencies": {}
 }

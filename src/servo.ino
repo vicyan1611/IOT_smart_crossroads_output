@@ -9,5 +9,5 @@ void servoSetup() {
 }
 
 void servoLoop() {
-  servo.write(180);
+  
 }
