@@ -19,10 +19,11 @@ void trafficLightSetup() {
     {
         pinMode(digitPins[i], OUTPUT);
     }
-    setNumber(redTime);
     pinMode(red_led, OUTPUT);
     pinMode(green_led, OUTPUT);
     pinMode(blue_led, OUTPUT);
+    setNumber(redTime);
+    ledColor(255,0,0);
 }
 
 void ledColor(int red_value, int green_value, int blue_value) {
@@ -89,7 +90,6 @@ void countdown() {
     previousMillis = currentMillis;
 
     second--;
-    Serial.println(second);
     if(second == 0)
       {
         currentTrafficState = 1 - currentTrafficState;
