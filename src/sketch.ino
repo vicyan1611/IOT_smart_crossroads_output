@@ -4,15 +4,15 @@ void setup() {
   Serial.begin(115200);
   Serial.println("Hello, ESP32!");
   trafficLightSetup();
-  servoSetup();
   relaySetup();
   button_stepmotorSetup();
+  mqttSetup();
 }
 
 void loop() {
-  servoLoop();
   trafficLightLoop();
   button_stepmotorLoop();
   relayLoop();
+  mqttLoop();
   delay(10); // this speeds up the simulation
 }

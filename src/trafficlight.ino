@@ -9,7 +9,8 @@ int green_led = 18;
 int red_led = 5; 
 int currentTrafficState = 0; //0 is red, 1 is green
 int redTime = 8, greenTime = 4;
-
+bool iswalker = false;
+int carflow = 0;
 void trafficLightSetup() {
     for (int i = 0; i < 4; ++i)
     {
@@ -51,6 +52,32 @@ void setNumber(int number) {
   numbertodisplay[1] = number % 10;
   curSegment = 0;
   ledLastDigit = 0;
+}
+
+void handleLightWalker() {
+  iswalker = true;
+  if (redTime == 20) { // neu it xe thi den do ngay
+    currentTrafficState = 1 - currentTrafficState;
+    second = 5;
+    ledColor(255,0,0);
+    iswalker = false;
+  }
+  Serial.println("hi from walker");
+
+}
+void handleCarFlow(String strcars) {
+  int cars = strcars.toInt();
+  Serial.println("hi from cars");
+  if (cars >= 8) {
+    redTime = 10;
+    greenTime = 20;
+  } else if (cars >= 5) {
+    redTime = 15;
+    greenTime = 15;
+  } else {
+    redTime = 20;
+    greenTime = 10;
+  }
 }
 
 void displayNumber() {
@@ -98,8 +125,9 @@ void countdown() {
           second = redTime;
           ledColor(255,0,0);
         } else {
-          second = greenTime;
+          second = greenTime - iswalker * 3; // Neu co nguoi di bo thi den xanh se ngan lai 1 ty
           ledColor(0,255,0);
+          iswalker = false;
         }
       }
     setNumber(second);
