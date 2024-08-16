@@ -54,6 +54,20 @@ void setNumber(int number) {
   ledLastDigit = 0;
 }
 
+void handleTrafficLight(String strMessage) {
+  String strTime;
+  for (int i = 1; i < strMessage.length(); ++i) {
+    strTime += strMessage[i];
+  }
+  int mtime = strTime.toInt();
+  if (strMessage[0] == 'x')
+  {
+    greenTime = mtime;
+  } else {
+    redTime = mtime;
+  }
+}
+
 void handleLightWalker() {
   iswalker = true;
   if (redTime == 20) { // neu it xe thi den do ngay
@@ -104,9 +118,6 @@ void displayNumber() {
     digitalWrite(digitPins[ledLastDigit], LOW);
     digitalWrite(digitPins[1-ledLastDigit], HIGH);
   }
-  // digitalWrite(digitPins[ledLastDigit], LOW);
-  // digitalWrite(digitPins[1-ledLastDigit], HIGH);
-  
 }
 
 void countdown() {

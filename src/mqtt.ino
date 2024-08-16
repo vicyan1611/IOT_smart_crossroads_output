@@ -64,6 +64,10 @@ void callback(char* topic, byte* message, unsigned int length) {
     handleLightWalker();
   if (strTopic == "/iot/cars")
     handleCarFlow(strMsg);
+  if (strTopic == "/iot/watering")
+    handleRelay(strMsg);
+  if (strTopic == "/iot/trafficlight")
+    handleTrafficLight(strMsg);
 }
 
 void publishData(String topic, String message) {
