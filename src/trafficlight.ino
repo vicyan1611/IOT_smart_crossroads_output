@@ -71,9 +71,8 @@ void handleTrafficLight(String strMessage) {
 void handleLightWalker() {
   iswalker = true;
   if (redTime == 20) { // neu it xe thi den do ngay
-    currentTrafficState = 1 - currentTrafficState;
+    if (currentTrafficState == 1)
     second = 5;
-    ledColor(255,0,0);
     iswalker = false;
   }
   Serial.println("hi from walker");
