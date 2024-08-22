@@ -40,7 +40,8 @@ void mqttConnect() {
       //***Subscribe all topic you need***
       mqttClient.subscribe("/iot/walker");
       mqttClient.subscribe("/iot/cars");
-     
+      mqttClient.subscribe("/iot/watering");
+      mqttClient.subscribe("/iot/trafficlight");
     }
     else {
       Serial.println("try again in 5 seconds");

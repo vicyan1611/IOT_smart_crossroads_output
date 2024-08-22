@@ -55,6 +55,7 @@ void setNumber(int number) {
 }
 
 void handleTrafficLight(String strMessage) {
+  Serial.println("hi from handle");
   String strTime;
   for (int i = 1; i < strMessage.length(); ++i) {
     strTime += strMessage[i];
