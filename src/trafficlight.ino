@@ -72,7 +72,7 @@ void handleLightWalker() {
   iswalker = true;
   if (redTime == 20) { // neu it xe thi den do ngay
     if (currentTrafficState == 1)
-    second = 5;
+    second = 3;
     iswalker = false;
   }
   Serial.println("hi from walker");
